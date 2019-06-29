@@ -1,0 +1,20 @@
+.header{
+  padding: 32px;
+  border-bottom: 1px solid #d5b477;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.header-logo{
+  width: 25%;
+  min-width: 64px;
+  max-width: 256px;
+  margin-right: 8px;
+  fill: #d5b477;
+}
+.sub-header{
+  color: gray;
+  margin: 0;
+  font-size: 20px;
+}

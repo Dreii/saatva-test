@@ -1,0 +1,121 @@
+/* ------------------------  Global List Styles --------------------------------------- */
+
+.list{
+  max-width: 512px;
+  margin: 0 auto;
+  animation: fade-in 0.8s ease-in;
+}
+
+@keyframes fade-in{
+  0%{opacity: 0; transform: translateY(10px);}
+  100%{opacity: 1; transform: translateY(0px);}
+}
+
+/* ------------------------  List item styles --------------------------------------- */
+.list-item{
+  position: relative;
+  margin-bottom: 32px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  color: #7a7a7a;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.list-item:hover{
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transform: scale(1.01);
+}
+
+/* ------------------------  Header styles --------------------------------------- */
+.list-item-header{
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+
+}
+.list-item:nth-child(odd) .list-item-header{flex-direction: row-reverse;}
+
+/* ------------------------  Image styles --------------------------------------- */
+.list-item .image{
+  position: relative;
+  flex: 0 0 40%;
+  background-size: cover;
+  background-position: center;
+  transition: flex 0.3s ease-out;
+}
+
+.list-item .image::after{
+  content: '';
+  position: absolute;
+  width: 64px;
+  top: -25%;
+  height: 150%;
+  transform: rotate(10deg);
+  background: white;
+  transition: transform 0.3s ease-out, left 0.3s ease-out, right 0.3s ease-out;
+}
+
+.list-item:hover .image::after{transform: rotate(0deg);}
+
+.list-item:nth-child(even) .image::after{right: -32px;}
+.list-item:nth-child(odd) .image::after{left: -32px;}
+
+/* disable after effect on tiny screens */
+@media only screen and (max-width: 500px) {.list-item .image::after{display: none;}}
+
+
+/* ------------------------  title and author styles --------------------------------------- */
+.list-item .title-container{
+  position: relative;
+  flex: 0 0 60%;
+  padding: 16px;
+  box-sizing: border-box;
+  background: white;
+}
+
+.list-item .title{font-weight: bold;}
+.list-item .author{color: #D5B477;}
+
+
+/* ------------------------  Body container styles --------------------------------------- */
+.list-item .body-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0 16px;
+  height: 0;
+  border-top: 1px solid #dddddd;
+  overflow: hidden;
+  text-decoration: none;
+  color: #707070;
+  transition: height 0.3s ease-out, padding 0.3s ease-out, background-color 0.3s ease-out;
+}
+
+.list-item .body-container .button{
+  position: absolute;
+  right: 8px;
+  bottom: 16px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #D5B477;
+  font-weight: bold;
+  transform: translateY(64px);
+  transition: transform 0.3s ease-out;
+}
+.list-item .body-container .button .svg-icon{stroke: #D5B477; height: 12px;}
+.list-item .body-container .body{height: 100%;}
+
+/* ------------------------  Body Open styles --------------------------------------- */
+.list-item.open .body-container{
+  height: 128px;
+  padding: 16px;
+}
+
+.list-item.open .body-container .button{transform: translateY(0);}
+
+.list-item.open .body-container:hover{background: #fafafa;}
+.list-item.open .body-container:hover .button{color: #f4be5a; transform: scale(1.1)}
+.list-item.open .body-container:hover .button .svg-icon{stroke: #f4be5a;}
